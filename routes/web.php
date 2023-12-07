@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Http\Controllers\Logincontroller;
 
 Route::get('/', function () {
     return view('page.index');
@@ -53,5 +52,13 @@ Route::get('/viewAppoinmentPatien', function () {
     return view('page.patient.View_Appointments');
 });
 
-Route::post('/Registationnewuser',[PatientController::class,'save']);
+
+Route::get('/successfull', function () {
+    return view('page.altet.successfull');
+});
+
+
+
+Route::post('/logindata', [Logincontroller::class, 'handleLoginData']);
+
 

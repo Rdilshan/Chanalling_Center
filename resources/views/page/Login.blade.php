@@ -7,11 +7,12 @@
             <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
                 <div class="col-lg-8">
                     <div class="bg-white boddyofconetend rounded p-5 m-5 mb-0">
-                        <form>
+                        <form method="POST" action="{{ url('logindata') }}">
+                            @csrf
                             <div class="row g-3">
 
                                 <div class="col-12">
-                                    <select class="form-control bg-light border-0" style="height: 55px;">
+                                    <select class="form-control bg-light border-0" style="height: 55px;" name='role'>
                                         <option value="1" selected>Select Role</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Patient</option>
@@ -22,11 +23,11 @@
 
                                 <div class="col-12">
                                     <input type="email" class="form-control bg-light border-0" placeholder="Email"
-                                        style="height: 55px;">
+                                        name="email" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
                                     <input type="password" class="form-control bg-light border-0" placeholder="Password"
-                                        style="height: 55px;">
+                                        name="password" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Login</button>
@@ -38,4 +39,5 @@
             </div>
         </div>
     </div>
+
 @endsection
