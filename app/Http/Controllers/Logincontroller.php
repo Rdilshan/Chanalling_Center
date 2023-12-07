@@ -21,6 +21,7 @@ class Logincontroller extends Controller
                 ->where('email', '=', $email)
                 ->get();
             $goto = 'adminDashboard';
+
         } elseif ($role == '2') {
             $login = Patient::where('passward', '=', $password)
                 ->where('email', '=', $email)
@@ -35,11 +36,17 @@ class Logincontroller extends Controller
 
         }
         if ($login->isNotEmpty()) {
-            // dd($login);
+
+            $id = $login->first()->id;
+            // dd($id);
+            $request->session()->put('id', $id);
+            $request->session()->put('Is_login', 'yes');
+
             return redirect("/successfull?successMessage=Login%20successful&goto={$goto}&check=success&msg=success");
 
          }else{
             $goto='Login';
+            $request->session()->put('Is_login', 'no');
             return redirect("/successfull?successMessage=Try%20Again&goto={$goto}&check=error&msg=Login%20Incorrect");
 
          }
@@ -47,4 +54,30 @@ class Logincontroller extends Controller
 
 
     }
+
+
+    public function dashboardcheckingISlogin(Request $request){
+
+        $id = $request->session()->get('id');
+        $Is_login = $request->session()->get('Is_login');
+        return view('page.admin.admin', compact('id', 'Is_login'));
+
+    }
+
+    public function DoctoringISlogin(Request $request){
+
+        $id = $request->session()->get('id');
+        $Is_login = $request->session()->get('Is_login');
+        return view('page.doctor.dashboard', compact('id', 'Is_login'));
+
+    }
+
+    public function patieningISlogin(Request $request){
+
+        $id = $request->session()->get('id');
+        $Is_login = $request->session()->get('Is_login');
+        return view('page.patient.dashboard', compact('id', 'Is_login'));
+
+    }
+
 }

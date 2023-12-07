@@ -57,8 +57,15 @@ Route::get('/successfull', function () {
     return view('page.altet.successfull');
 });
 
-
+// function start here
 
 Route::post('/logindata', [Logincontroller::class, 'handleLoginData']);
+
+// loginchecking
+Route::get('/adminDashboard', [Logincontroller::class, 'dashboardcheckingISlogin']);
+Route::get('/patien', [Logincontroller::class, 'patieningISlogin']);
+Route::get('/Doctor', [Logincontroller::class, 'DoctoringISlogin']);
+
+
 
 
