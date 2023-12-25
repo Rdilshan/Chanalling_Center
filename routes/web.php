@@ -3,6 +3,8 @@
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Logincontroller;
+use App\Http\Controllers\DoctorController;
+
 
 Route::get('/', function () {
     return view('page.index');
@@ -22,6 +24,7 @@ Route::get('/Registation', function () {
 
 Route::get('/addDoctor', function () {
     return view('page.admin.add_doctor');
+
 });
 
 Route::get('/viewAppoinment', function () {
@@ -60,6 +63,9 @@ Route::get('/successfull', function () {
 // function start here
 
 Route::post('/logindata', [Logincontroller::class, 'handleLoginData']);
+Route::post('/addnewdoctordata', [DoctorController::class, 'addnewdoctor']);
+
+
 
 // loginchecking
 Route::get('/adminDashboard', [Logincontroller::class, 'dashboardcheckingISlogin']);
@@ -67,5 +73,8 @@ Route::get('/patien', [Logincontroller::class, 'patieningISlogin']);
 Route::get('/Doctor', [Logincontroller::class, 'DoctoringISlogin']);
 
 
+// datapass for page
 
 
+Route::get('/addDoctor', [DoctorController::class, 'getSpecialization']);
+Route::get('/viewDoctor',[DoctorController::class,'getalldoctor']);

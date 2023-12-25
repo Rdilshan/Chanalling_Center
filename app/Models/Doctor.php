@@ -16,7 +16,10 @@ class Doctor extends Model
         "Gender",
         "contact_no",
         "Specilization",
-        "passward"
+        "passward",
+        "ChangingDate",
+        "ChangingTime",
+        "Fees"
 
     ] ;
 }

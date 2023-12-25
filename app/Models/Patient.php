@@ -21,4 +21,5 @@ class Patient extends Model
         "passward"
 
     ] ;
+    public $timestamps = false; // This line will disable the automatic timestamp columns
 }

@@ -17,38 +17,40 @@
                 <thead>
                     <tr>
                         <tr>
-                            <th>Doctor Id</th>
+                            <th>#</th>
                             <th>Doctor Name</th>
                             <th>Specialization</th>
                             <th>Gender</th>
                             <th>Phone NO</th>
-                            <th>Channeling Room NO</th>
                             <th>Channeling Dates</th>
                             <th>Channeling Time</th>
                         </tr>
                     </tr>
                 </thead>
                 <tbody id="table-body">
+
+                @foreach($doctors as $doctor)
+
                     <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>Cardiology</td>
-                        <td>male</td>
-                        <td>01168901</td>
-                        <td>Dr. Smith</td>
-                        <td>2023-11-26</td>
-                        <td>10:30 AM</td>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$doctor->Full_name}}</td>
+
+
+                        @php
+                            $data = DB::select("SELECT * FROM doctor_speclist WHERE id = {$doctor->Specilization}");
+                        @endphp
+
+                        <td>{{ $data ? $data[0]->name : 'N/A' }}</td>
+
+                        <td>{{$doctor->Gender}}</td>
+                        <td>{{$doctor->contact_no}}</td>
+                        <td>{{$doctor->ChangingDate}}</td>
+                        <td>{{ \Carbon\Carbon::parse($doctor->ChangingTime)->format('h:i A') }}</td>
+
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>John Doe</td>
-                        <td>Cardiology</td>
-                        <td>male</td>
-                        <td>01168901</td>
-                        <td>Dr. Smith</td>
-                        <td>2023-11-26</td>
-                        <td>10:30 AM</td>
-                    </tr>
+
+                @endforeach
+
                 </tbody>
             </table>
         </div>
