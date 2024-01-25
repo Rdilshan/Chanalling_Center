@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppoinmentController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Logincontroller;
@@ -64,6 +65,10 @@ Route::get('/successfull', function () {
 
 Route::post('/logindata', [Logincontroller::class, 'handleLoginData']);
 Route::post('/addnewdoctordata', [DoctorController::class, 'addnewdoctor']);
+Route::post('/addnewappoiment', [AppoinmentController::class, 'addnewappoiment']);
+Route::post('/selecteddoctors', [DoctorController::class, 'selecteddoctors']);
+Route::post('/selecteddoctorsname', [DoctorController::class, 'selecteddoctorsname']);
+
 
 
 
@@ -78,3 +83,11 @@ Route::get('/Doctor', [Logincontroller::class, 'DoctoringISlogin']);
 
 Route::get('/addDoctor', [DoctorController::class, 'getSpecialization']);
 Route::get('/viewDoctor',[DoctorController::class,'getalldoctor']);
+Route::get('/AddAppoinment',[DoctorController::class,'getSpecializationfor']);
+
+
+//handle payment page
+
+Route::get('/payment',[PatientController::class,'passthepayment']);
+Route::post('/submitFormpayment',[PatientController::class,'paymentsave']);
+

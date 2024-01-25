@@ -73,3 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+function goBack() {
+    window.history.back();
+}

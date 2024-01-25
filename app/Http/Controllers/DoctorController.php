@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
-    public function addnewdoctor(Request $request){
+    public function addnewdoctor(Request $request)
+    {
 
         $doctorName = $request->input('doctorName');
         $Specialization = $request->input('Specialization');
@@ -16,7 +17,7 @@ class DoctorController extends Controller
         $phoneNumber = $request->input('phoneNumber');
         $email = $request->input('Email');
         $password = $request->input('password');
-        $changingDate= $request->input('changingDate');
+        $changingDate = $request->input('changingDate');
         $changingTime = $request->input('changingTime');
         $changingFees = $request->input('changingFees');
 
@@ -33,16 +34,40 @@ class DoctorController extends Controller
         ]);
 
         $newdoctor->save();
-        $goto='adminDashboard';
+        $goto = 'adminDashboard';
         return redirect("/successfull?successMessage=Added%20successful&goto={$goto}&check=success&msg=success");
     }
 
-    public function getSpecialization(){
+    public function getSpecialization()
+    {
         $specializations = DB::select('SELECT * FROM doctor_speclist');
         return view('page.admin.add_doctor', ['specializations' => $specializations]);
     }
-    public function getalldoctor(){
+
+    public function getSpecializationfor()
+    {
+        $specializations = DB::select('SELECT * FROM doctor_speclist');
+        return view('page.patient.Appointments', ['specializations' => $specializations]);
+    }
+    public function getalldoctor()
+    {
         $doctors = DB::select('SELECT * FROM doctor');
         return view('page.admin.view_doctor', ['doctors' => $doctors]);
     }
+
+    public function selecteddoctors(Request $request)
+    {
+        $selectvalue = $request->input('selectedSpecialization'); // Corrected input key
+
+        $doctors = DB::select("SELECT * FROM doctor WHERE Specilization = '$selectvalue'"); // Corrected query syntax
+
+        return response()->json(['doctors' => $doctors]);
+    }
+    public function selecteddoctorsname(Request $request)
+    {
+        $selectvalue = $request->input('selectedDoctor');
+        $doctors = DB::select("SELECT * FROM doctor WHERE id = '$selectvalue'"); // Corrected query syntax
+        return response()->json(['doctors' => $doctors]);
+    }
+
 }

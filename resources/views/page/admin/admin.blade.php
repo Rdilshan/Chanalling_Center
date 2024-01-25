@@ -10,7 +10,9 @@
                             <i class="fa-solid fa-user-doctor"></i>
                         </div>
                         <h2>Doctors Count</h2>
-                        <div class="count" id="doctorsCount">12</div>
+                        <div class="count" id="doctorsCount">
+                            {{$count}}
+                        </div>
                     </div>
 
                     <div class="square" id="patientsCountSquare">
@@ -28,7 +30,9 @@
                             <i class="fa-solid fa-bed-pulse"></i>
                         </div>
                         <h2>Available Services</h2>
-                        <div class="count" id="availableServicesCount">19</div>
+                        <div class="count" id="availableServicesCount">
+                            {{$speclistcount}}
+                        </div>
                     </div>
 
                     <div class="square" id="offersAvailableSquare">

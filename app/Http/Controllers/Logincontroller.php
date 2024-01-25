@@ -5,12 +5,13 @@ use App\Models\Admin;
 use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Logincontroller extends Controller
 {
     public function handleLoginData(Request $request)
     {
-
+        $request->session()->put('Is_login', 'no');
         $email = $request->input('email');
         $password = $request->input('password');
         $role = $request->input('role');
@@ -58,9 +59,14 @@ class Logincontroller extends Controller
 
     public function dashboardcheckingISlogin(Request $request){
 
+
         $id = $request->session()->get('id');
         $Is_login = $request->session()->get('Is_login');
-        return view('page.admin.admin', compact('id', 'Is_login'));
+
+        $count = DB::select('SELECT COUNT(id) as count FROM doctor')[0]->count;
+        $speclistcount = DB::select('SELECT COUNT(id) as speclistcount FROM doctor_speclist')[0]->speclistcount;
+
+        return view('page.admin.admin', compact('id', 'Is_login','count','speclistcount'));
 
     }
 

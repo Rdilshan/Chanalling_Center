@@ -14,22 +14,15 @@
                 <h1 class="mb-4">View Appointment</h1>
                 <form>
                     <div class="row g-3">
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12">
                             <select class="form-select bg-light border-0" style="height: 55px;">
-                                <option selected>Choose Department</option>
+                                <option selected>Choose Appoinment</option>
                                 <option value="1">Department 1</option>
                                 <option value="2">Department 2</option>
                                 <option value="3">Department 3</option>
                             </select>
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <select class="form-select bg-light border-0" style="height: 55px;">
-                                <option selected>Select Doctor</option>
-                                <option value="1">Doctor 1</option>
-                                <option value="2">Doctor 2</option>
-                                <option value="3">Doctor 3</option>
-                            </select>
-                        </div>
+
                         <div class="col-12 col-sm-6">
                             <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
                         </div>
