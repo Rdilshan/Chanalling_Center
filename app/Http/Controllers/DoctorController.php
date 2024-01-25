@@ -34,7 +34,7 @@ class DoctorController extends Controller
         ]);
 
         $newdoctor->save();
-        $goto = 'adminDashboard';
+        $goto = 'Login';
         return redirect("/successfull?successMessage=Added%20successful&goto={$goto}&check=success&msg=success");
     }
 

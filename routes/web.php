@@ -91,3 +91,10 @@ Route::get('/AddAppoinment',[DoctorController::class,'getSpecializationfor']);
 Route::get('/payment',[PatientController::class,'passthepayment']);
 Route::post('/submitFormpayment',[PatientController::class,'paymentsave']);
 
+//show appoinment
+
+Route::get('/viewAppoinmentPatien',[PatientController::class,'getappoinment']);
+
+
+// user registation
+Route::post('/Registationnewuser',[PatientController::class,'save']);

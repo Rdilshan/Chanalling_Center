@@ -25,7 +25,7 @@
                       class="form-control bg-light border-0"
                       placeholder="Full Name"
                       name="fullname"
-                      style="height: 55px"
+                      style="height: 55px" required
                     />
                   </div>
                   <div class="col-12">
@@ -34,18 +34,27 @@
                       name="email"
                       class="form-control bg-light border-0"
                       placeholder="Email"
-                      style="height: 55px"
+                      style="height: 55px" required
+                    />
+                  </div>
+                  <div class="col-12">
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control bg-light border-0"
+                      placeholder="password"
+                      style="height: 55px" required
                     />
                   </div>
 
                   <div class="col-12">
                     <select
                       class="form-control bg-light border-0"
-                      style="height: 55px"
+                      style="height: 55px" required name='gender'
                     >
-                      <option value="1" selected>Select Gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
+                      <option value="0" selected>Select Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
                     </select>
                   </div>
 
@@ -55,7 +64,7 @@
                       name="dob"
                       class="form-control bg-light border-0"
                       placeholder="Date of birth"
-                      style="height: 55px"
+                      style="height: 55px" required
                     />
                   </div>
 
@@ -65,7 +74,7 @@
                       name="contactnum"
                       class="form-control bg-light border-0"
                       placeholder="Contact No"
-                      style="height: 55px"
+                      style="height: 55px" required
                     />
                   </div>
 
@@ -75,7 +84,7 @@
                       class="form-control bg-light border-0"
                       placeholder="Address"
                       name="addresss"
-                      style="height: 55px"
+                      style="height: 55px" required
                     />
                   </div>
 
@@ -91,19 +100,6 @@
                     </label>
                   </div>
 
-                  <div class="col-12">
-                    <select
-                      class="form-control bg-light border-0"
-                      style="height: 55px"
-                    >
-                      <option value="1" selected>Doctor Name</option>
-                      <option value="1">A</option>
-                      <option value="2">B</option>
-                      <option value="2">B</option>
-                      <option value="2">B</option>
-                      <option value="2">B</option>
-                    </select>
-                  </div>
 
                   <div class="col-12">
                     Allegics to mediciine
@@ -117,7 +113,7 @@
 
                   <div class="col-12">
                     <div class="col-12">
-                        <textarea class="form-control bg-light border-0" rows="5" placeholder="Mention Dieases that your here.."></textarea>
+                        <textarea class="form-control bg-light border-0" rows="5" placeholder="Mention Dieases that your here.." name='Dieases'></textarea>
                     </div>
                   </div>
 

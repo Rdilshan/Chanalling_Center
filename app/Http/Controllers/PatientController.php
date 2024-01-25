@@ -14,7 +14,42 @@ class PatientController extends Controller
     }
 
     public function save(request $request){
-        dd($request->all());
+        // dd($request->all());
+
+        $fullname = $request->input('fullname');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $gender = $request->input('gender');
+
+
+        $dob = $request->input('dob');
+        $contactnum = $request->input('contactnum');
+        $addresss = $request->input('addresss');
+
+        $Marital_Married = $request->input('Marital_Married');
+
+        $Allegics_yes = $request->input('Allegics_yes');
+
+        $Dieases = $request->input('Dieases');
+
+        $newPatient = new Patient([
+
+        ]);
+
+        $newPatient = new Patient([
+            'Full_name' =>  $fullname,
+            'email' => $email,
+            'Gender' => $gender, // Adjust as needed
+            'dob' =>  $dob,
+            'contact_no' => $contactnum,
+            'address' => $addresss,
+            'marital_status' => $Marital_Married, // Adjust as needed
+            'Allegics_medicine' => $Allegics_yes,
+            'passward' => $password,
+        ]);
+        $newPatient->save();
+        $goto = 'adminDashboard';
+        return redirect("/successfull?successMessage=Added%20successful&goto={$goto}&check=success&msg=success");
     }
 
     public function passthepayment(request $request){
@@ -47,6 +82,15 @@ class PatientController extends Controller
             return redirect("/successfull?successMessage=Try%20Again&goto={$goto}&check=error&msg=data%20Incorrect");
 
         }
+
+    }
+
+    public function getappoinment(request $request){
+        $id = $request->session()->get('id');
+
+        $getpaymentdoctors =DB::select("SELECT * FROM booking WHERE userid = ?", [$id]);
+        return view('page.patient.View_Appointments', ['getpaymentdoctors' => $getpaymentdoctors]);
+
 
     }
 }
