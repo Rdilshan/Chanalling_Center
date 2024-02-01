@@ -94,6 +94,9 @@ Route::post('/submitFormpayment',[PatientController::class,'paymentsave']);
 //show appoinment
 
 Route::get('/viewAppoinmentPatien',[PatientController::class,'getappoinment']);
+Route::post('/selectedAppointment',[PatientController::class,'selectAppoinment']);
+Route::post('/getvalidappoinment',[PatientController::class,'selectVailAppoinment']);
+
 
 
 // user registation
