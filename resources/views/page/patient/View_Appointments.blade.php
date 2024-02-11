@@ -155,12 +155,14 @@
 
         function findRowPosition(data, condition) {
             const name = condition.replace(/\s+/g, '');
-
+console.log(name);
             for (var i = 0; i < data.length; i++) {
                 const test = data[i].patient_name.replace(/\s+/g, '');
+                console.log(test);
                 if (test === name) {
 
                     addRowsToTable(data);
+                    console.log(i+1);
                     return (i + 1);
                 }
             }

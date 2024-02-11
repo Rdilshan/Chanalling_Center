@@ -93,7 +93,7 @@ class PatientController extends Controller
     {
         $id = $request->session()->get('id');
 
-        $getpaymentdoctors = DB::select("SELECT * FROM booking WHERE userid = ?", [$id]);
+        $getpaymentdoctors = DB::select("SELECT * FROM booking WHERE userid = ? AND payment = 1", [$id]);
         return view('page.patient.View_Appointments', ['getpaymentdoctors' => $getpaymentdoctors]);
 
 
